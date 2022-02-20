@@ -166,7 +166,7 @@ gbm_reg = function(train,test,target,drop = NULL,interaction.depth=c(1:7),
                         data = train,
                         tuning =params,
                         args = list(distribution="gaussian"),
-                        folds = cvFolds(nrow(train), K=10, type = "random"),
+                        folds = cvTools::cvFolds(nrow(train), K=10, type = "random"),
                         seed =2,
                         predictArgs = list(n.trees=params$n.trees)
     )
