@@ -1,13 +1,19 @@
-\name{tree_reg}
-\alias{tree_reg}
+\name{gbm_reg}
+\alias{gbm_reg}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Custom function for  regression by decision tree.
+Custom function for regression by Gradient Boosting Machine
 }
 \description{
-This function takes training data, tesing data, target variable and predict target variable of the training data}
+This function takes training data, tesing data, target variable, tuning parameters, and predict target variable of the training data by GBM regression model.
+}
 \usage{
-tree_func(train, test, target, drop = NULL)
+gbm_reg(train,test,target,
+drop = NULL,num_trials=10,
+interaction.depth=c(1:7),
+n.trees=c(50,100,200,500,700),
+shrinkage=c(.1,.01,.001),
+n.minobsinnode=c(1,2,5,10))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,24 +24,27 @@ Training Data as a dataframe.
 Testing Data as a dataframe.
 }
 \item{target}{
-Name of the variable where probability score needs to be predicted
+Name of the variable that needs to predict
 }
 \item{drop}{
 Name of the variable that needs to be dropped before building the model.
 }
+\item{num_trials}{
+Total number of trails to find best  combination of GBM parameters causing minimum error
 }
-\details{
-This is a custom function for  regression by decision tree, it builds a tree model first on the training data.
+\item{interaction.depth}{GBM Tuning parameter: Integer specifying the maximum depth of each tree (i.e., the highest level of variable interactions allowed). A value of 1 implies an additive model, a value of 2 implies a model with up to 2-way interactions, etc. Default is c(.1,.01,.001)}
 
-The argument 'drop' removes the variables not needed to build the model.
+\item{n.trees}{GBM Tuning parameter: Integer specifying the total number of trees to fit. This is equivalent to the number of iterations and the number of basis functions in the additive expansion. Default is c(50,100,200,500,700).
+}
+\item{shrinkage}{
+GBM Tuning parameter: a shrinkage parameter applied to each tree in the expansion. Also known as the learning rate or step-size reduction; 0.001 to 0.1 usually work, but a smaller learning rate typically requires more trees. Default is c(.1,.01,.001)}
 
-The remaining variables are used to make the final tree model and predict the target variable on the training data.}
+\item{minobsinnode}{
+GBM Tuning parameter: Integer specifying the minimum number of observations in the terminal nodes of the trees. Note that this is the actual number of observations, not the total weight.Default is c(1,2,5,10)
+}
+}
 \value{
 The value returns from this function is a numeric vector.
-
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 ABIR CHAKRABORTY < mail2abirchakraborty@gmail.com >
@@ -50,7 +59,6 @@ ABIR CHAKRABORTY < mail2abirchakraborty@gmail.com >
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
