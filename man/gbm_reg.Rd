@@ -32,7 +32,7 @@ Name of the variable that needs to be dropped before building the model.
 \item{num_trials}{
 Total number of trails to find best  combination of GBM parameters causing minimum error
 }
-\item{interaction.depth}{GBM Tuning parameter: Integer specifying the maximum depth of each tree (i.e., the highest level of variable interactions allowed). A value of 1 implies an additive model, a value of 2 implies a model with up to 2-way interactions, etc. Default is c(.1,.01,.001)}
+\item{interaction.depth}{GBM Tuning parameter: Integer specifying the maximum depth of each tree (i.e., the highest level of variable interactions allowed). A value of 1 implies an additive model, a value of 2 implies a model with up to 2-way interactions, etc. Default is c(1:7)}
 
 \item{n.trees}{GBM Tuning parameter: Integer specifying the total number of trees to fit. This is equivalent to the number of iterations and the number of basis functions in the additive expansion. Default is c(50,100,200,500,700).
 }
