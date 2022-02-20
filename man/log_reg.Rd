@@ -1,0 +1,74 @@
+\name{log_reg}
+\alias{log_reg}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Custom function for logistic regression
+}
+\description{
+This function takes training data, tesing data, target variable and predict the probability score of target variable = 1.Target varibale of training data should contain 1 and 0 only.
+}
+\usage{
+log_reg(train, test, vif = 10, p = 0.05, target, drop = NULL)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+\item{train}{
+Training Data as a dataframe.
+}
+\item{test}{
+Testing Data as a dataframe.
+}
+\item{vif}{
+Cut off value of VIF
+}
+\item{p}{
+Cut off of p-value
+}
+\item{target}{
+Name of the variable where probability score needs to be predicted
+}
+\item{drop}{
+Name of the variable that needs to be dropped before building the model.
+}
+}
+\details{
+This is a custom function for logistic regression, it builds a logistic model first on the training data.
+
+The argument 'drop' removes the variables not needed to build the model.
+
+The argument 'vif' set the cut off of VIF and drop the variable with highest vif one by one till the maximum value of vif is less than cut-off.
+
+The argument 'p' set the cut off of p-value and drop the variable with highest p-value one by one till the maximum value of p-value is less than cut-off.
+
+The remaining variables are used to make the final logistic model and predict the target variable on the training data.}
+\value{
+The value returns is the probability score of target variable = 1 as a numeric vector.
+
+}
+\references{
+%% ~put references to the literature/web site here ~
+}
+\author{
+ABIR CHAKRABORTY < mail2abirchakraborty@gmail.com >
+}
+\note{
+The target variable column of training data should contain in 1 or 0 only.
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+}
+\examples{
+
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory (show via RShowDoc("KEYWORDS")):
+% \keyword{ ~kwd1 }
+% \keyword{ ~kwd2 }
+% Use only one keyword per line.
+% For non-standard keywords, use \concept instead of \keyword:
+% \concept{ ~cpt1 }
+% \concept{ ~cpt2 }
+% Use only one concept per line.
