@@ -133,7 +133,7 @@ tree_reg = function(train,test,target,drop=NULL)
 
 gbm_reg = function(train,test,target,drop = NULL,interaction.depth=c(1:7),
                    n.trees=c(50,100,200,500,700),shrinkage=c(.1,.01,.001),
-                   n.minobsinnode=c(1,2,5,10),num_trials=10)
+                   n.minobsinnode=c(1,2,5,10),num_trials=10,type = 'NULL')
 
 {
   train =dplyr::select(train,-drop)
@@ -205,7 +205,7 @@ gbm_reg = function(train,test,target,drop = NULL,interaction.depth=c(1:7),
 
 rf_pt_reg = function(train,test,target,drop = NULL,mtry=c(5,10,15,20,25),
                      ntree=c(50,100,200,500,700),maxnodes=c(5,10,15,20,30,50),
-                     nodesize=c(1,2,5,10),num_trials=10)
+                     nodesize=c(1,2,5,10),num_trials=10,type = 'NULL')
 {
   train =dplyr::select(train,-drop)
   param=list(mtry,ntree,maxnodes,nodesize)
