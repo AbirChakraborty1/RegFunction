@@ -13,7 +13,8 @@ drop = NULL,num_trials=10,
 interaction.depth=c(1:7),
 n.trees=c(50,100,200,500,700),
 shrinkage=c(.1,.01,.001),
-n.minobsinnode=c(1,2,5,10))
+n.minobsinnode=c(1,2,5,10),
+type='NULL')
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,6 +42,9 @@ GBM Tuning parameter: a shrinkage parameter applied to each tree in the expansio
 
 \item{minobsinnode}{
 GBM Tuning parameter: Integer specifying the minimum number of observations in the terminal nodes of the trees. Note that this is the actual number of observations, not the total weight.Default is c(1,2,5,10)
+}
+\item{type}{
+if type = "tuning", it will return the least error with best value of the best parameter combination,any other value will return the prediction on testing data.
 }
 }
 \value{

@@ -13,7 +13,9 @@ drop = NULL,num_trials=10,
 mtry=c(1:7),
 ntree=c(50,100,200,500,700),
 maxnodes=c(5,10,15,20,30,50),
-nodesize=c(1,2,5,10))
+nodesize=c(1,2,5,10),
+type='NULL'
+)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,6 +43,9 @@ Random Forest Tuning parameter: The size of the tree. Default is c(5,10,15,20,30
 
 \item{nodesize}{
 Random Forest Tuning parameter: Max number of terminal nodes.Default is c(1,2,5,10)
+}
+\item{type}{
+if type = "tuning", it will return the least error with best value of the best parameter combination,any other value will return the prediction on testing data.
 }
 }
 \value{

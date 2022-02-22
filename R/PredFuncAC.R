@@ -193,8 +193,13 @@ gbm_reg = function(train,test,target,drop = NULL,interaction.depth=c(1:7),
                         interaction.depth = best_params$interaction.depth,
                         distribution = "gaussian")
   test.pred=predict(ld.gbm.final,newdata=test,n.trees = best_params$n.trees)
-  return(test.pred)
-}
+  myerror = as.data.frame(myerror)
+  tuning = as.data.frame(c(myerror,best_params))
+
+
+  if (type == 'tuning'){
+    final = tuning} else {final = test.pred}
+  return(final)}
 
 ## Random Forest with Parameter Tuning
 
@@ -255,8 +260,15 @@ rf_pt_reg = function(train,test,target,drop = NULL,mtry=c(5,10,15,20,25),
                                          data=ld_train)
 
   test.pred=predict(ld.rf.final,newdata=test)
-  return(test.pred)
-}
+
+  myerror = as.data.frame(myerror)
+  tuning = as.data.frame(c(myerror,best_params))
+
+
+  if (type == 'tuning'){
+    final = tuning} else {final = test.pred}
+  return(final)
+  }
 
 
 
